@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { View, Text,Button,StyleSheet, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text,Button,StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import LottieView from 'lottie-react-native'
 import Sound from 'react-native-sound';
 import { useFocusEffect } from '@react-navigation/native';
@@ -93,7 +93,7 @@ const Feedback = ({route,navigation}) => {
     },[isCorrect])
     useEffect(()=>{
         try {
-            const s=new Sound(isCorrect?require("../assets/audio/victory.mp3"):require("../assets/audio/wrong.mp3"),(error)=>{
+            const s=new Sound(isCorrect?require("../assets/audio/correct.mp3"):require("../assets/audio/wrong.mp3"),(error)=>{
                 if(error){
                     return
                 }
@@ -216,9 +216,11 @@ const Feedback = ({route,navigation}) => {
     }
 
     return (
-        <View style={[styles.container,{backgroundColor:isCorrect?'#7ABD8F':'#E37365',display:'flex',alignItems:'left',justifyContent:'center',padding:30}]}>
-            <StatusBar backgroundColor={isCorrect?'#7ABD8F':'#E37365'} barStyle="dark-content" />
-            {
+        <View style={[styles.container,{backgroundColor:isCorrect?'#68BB6C':'#ef5350',flex:1,alignItems:'center',justifyContent:'center'}]}>
+            <View>
+                <Text style={{fontSize:50,color:'white'}}>{isCorrect?"GREAT JOB":"UH OH!"}</Text>
+            </View>
+            {/* {
                 isCorrect && <LottieView
                 ref={animation}
                 source={require('../assets/correct-celeb.json')}
@@ -227,32 +229,36 @@ const Feedback = ({route,navigation}) => {
                 style={styles.animation}
                 resizeMode='cover'
                 />
-            } 
-            <View style={{display:'flex',flexDirection:'col',justifyContent:'center',alignItems:'left',marginBottom:'100%',marginLeft:20}}>
-                <Text style={{fontSize:48,color:'white'}}>{isCorrect?"THAT'S RIGHT":"UH-OH!"}</Text>
-                <Text style={{fontSize:24,color:'black',fontWeight:'100'}}>{isCorrect?"Let's go ahead":"Let's try again"}</Text>
-            </View>
-            
-            
-            
+            }
+            {
+                !isCorrect &&  <LottieView
+                ref={animation}
+                source={require('../assets/wrong-celeb.json')}
+                autoPlay={true} // Set to true if you want it to auto play
+                loop={true} // Set to true if you want it to loop
+                style={styles.animation}
+                resizeMode='cover'
+                />
+            } */}
+
             <View style={styles.buttonContainers}>
                 {
                     isCorrect && <>
-                        <TouchableOpacity style={[styles.button,{backgroundColor:'transparent',borderWidth:1,borderColor:'black',color:'black',paddingVertical:10}]} onPress={handleTryAgain}>
-                            <Text style={[styles.text,{color:'black'}]}>Practice Again</Text>
+                        <TouchableOpacity style={styles.button} onPress={handleTryAgain}>
+                            <Text style={styles.text}>Practice Again</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button,{backgroundColor:'#F5D17D'}]} onPress={handleNextLesson}>
-                            <Text style={[styles.text,{color:'black'}]}>Next</Text>
+                        <TouchableOpacity style={styles.button} onPress={handleNextLesson}>
+                            <Text style={styles.text}>Next</Text>
                         </TouchableOpacity>
                     </>
                 }
                 {
                     !isCorrect && <>
-                        <TouchableOpacity style={[styles.button,{backgroundColor:'transparent',borderWidth:1,borderColor:'black',paddingVertical:10}]} onPress={handleReplay}>
-                            <Text style={[styles.text,{color:'black'}]}>Replay</Text>
+                        <TouchableOpacity style={styles.button} onPress={handleReplay}>
+                            <Text style={styles.text}>Replay</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button,{backgroundColor:'black'}]} onPress={handleTryAgain}>
-                            <Text style={[styles.text,{color:'white'}]}>Try Again</Text>
+                        <TouchableOpacity style={styles.button} onPress={handleTryAgain}>
+                            <Text style={styles.text}>Try Again</Text>
                         </TouchableOpacity>
                     </>
                 }
@@ -266,6 +272,7 @@ const Feedback = ({route,navigation}) => {
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
+        flex:1,
         width:'100%',
         height:'100%',
         position:'relative',
@@ -279,21 +286,19 @@ const styles = StyleSheet.create({
       buttonContainers:{
         width:width,
         display:'flex',
-        flexDirection:'col',
+        flexDirection:'row',
         position:'absolute',
         bottom:20,
-        gap:20,
+        gap:10,
         padding:20
       },
       button:{
         backgroundColor:'#0288d1',
         flex:1,
-        width:'100%',
+        height:50,
         alignItems:'center',
         justifyContent:'center',
-        borderRadius:10,
-        padding:20,
-        color:'black'
+        borderRadius:10
       },
       text:{
         fontSize:20,

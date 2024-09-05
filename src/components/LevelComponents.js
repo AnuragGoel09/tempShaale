@@ -35,7 +35,7 @@ const LevelComponents = ({data,progress}) => {
             <View style={{paddingHorizontal:30,display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                 <View>
                     <Text style={[styles.levelHeading, { color: progress==100?COLORS.complete:COLORS.primary }]}>{data.title}</Text>
-                    <Text style={styles.levelSubHeading}>{data.subTitle}</Text>
+                    <Text style={styles.levelSubHeading}>Basic Syllables</Text>
                 </View>
                 <View>
                     {

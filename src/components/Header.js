@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 import ProfileOptions from './ProfileOptions';
 
 const Header = ({isAdmin}) => {
     const [showOptions,setShowOptions]=useState(false)
-    // const boxRef=useRef(null)
     return (
         <View style={styles.container}>
             <View style={styles.left}>
@@ -30,19 +29,18 @@ const Header = ({isAdmin}) => {
 const styles=StyleSheet.create({
     container:{
         width:Dimensions.get("window").width,
-        paddingHorizontal:30,
+        padding:30,
         marginTop:20,
         flex:1,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'end',
         position:'relative',
-        paddingVertical:35
 
     },
     logo:{
-        width:60,
-        height:60
+        width: 60,
+        height: 60,
     },
     profile:{
         width:30,
@@ -50,15 +48,13 @@ const styles=StyleSheet.create({
     },
     growth:{
         width:25,
-        height:25,
+        height:25
     }, 
     left:{
-        position:'relative',
         flex:1,
         flexDirection:'row',
         justifyContent:'flex-start',
         alignItems:'center',
-        
     },
     right:{
         flex:1,
