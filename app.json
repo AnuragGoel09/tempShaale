@@ -1,0 +1,11 @@
+{
+  "name": "ShaaleCLI",
+  "displayName": "Ta Ka Di Mi",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "415ba8da-7120-4159-9047-a7ab2ce76032"
+      }
+    }
+  }
+}

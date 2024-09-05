@@ -1,0 +1,31 @@
+const icons=[
+    {
+        light:require("../assets/icons/light/instruments1.png"),
+        dark:require("../assets/icons/dark/instruments1.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments2.png"),
+        dark:require("../assets/icons/dark/instruments2.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments3.png"),
+        dark:require("../assets/icons/dark/instruments3.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments4.png"),
+        dark:require("../assets/icons/dark/instruments4.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments5.png"),
+        dark:require("../assets/icons/dark/instruments5.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments6.png"),
+        dark:require("../assets/icons/dark/instruments6.png")
+    },
+    {
+        light:require("../assets/icons/light/instruments7.png"),
+        dark:require("../assets/icons/dark/instruments7.png")
+    },
+]
+export default icons;
